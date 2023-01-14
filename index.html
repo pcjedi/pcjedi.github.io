@@ -38,7 +38,7 @@
 
 <h2 id="git_authentication_for_github">Git Authentication for GitHub</h2>
 
-<p>Basically you have two options: Either use https or ssh. You can also use both, which I would recommend. If you are using a modern IDE, consider using a plug-in for GitHub. If you are using VSCode, consider using their integrated GitHub Cloning, which makes the beyond consideration obsolete.</p>
+<p>You have two options: https or ssh. You can also use both. I recommend https, because the Permissions can be fine-grained with expiration date. In both cases the credentials will be unencrypted in your home directory. If you are using a modern IDE, consider using a plug-in for GitHub. If you are using VSCode, consider using their integrated GitHub Cloning, which makes the beyond consideration obsolete.</p>
 <h3>https</h3>
 <h4>Advantages</h4>
 <ul>
@@ -50,14 +50,14 @@
 <ol>
     <li>Head over to <a href="https://github.com/settings/tokens">GitHub Token Generator</a> and generate a token.</li>
     <li>enter `export GITHUB_TOKEN=ghp_y0ur63ner4ted9er5ona14cce5570ken#3r3` into your terminal</li>
-    <li>enter `git config --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "https://github.com/"` into your terminal</li>
-    <li>add the above two lines to ~/.bashrc to make this reboot save</li>
+    <li>enter `git config --add --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "https://github.com/"` into your terminal</li>
 </ol>
 <h4>Force Usage</h4>
 <ol>
-    <li>enter `git config --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "ssh://ssh@github.com/"` into your terminal</li>
-    <li>enter `git config --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "ssh://ssh@github.com:"` into your terminal</li>
-    <li>add the above two lines to ~/.bashrc to make this reboot save</li>
+    <li>enter `git config --add --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "ssh://git@github.com:"` into your terminal</li>
+    <li>enter `git config --add --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "ssh://git@github.com/"` into your terminal</li>
+    <li>enter `git config --add --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "git@github.com:"` into your terminal</li>
+    <li>enter `git config --add --global url."https://api:$GITHUB_TOKEN@github.com/".insteadOf "git@github.com/"` into your terminal</li>
 </ol>
 <h3>ssh</h3>
 <h4>Advantages</h4>
@@ -72,8 +72,7 @@
 </ol>
 <h4>Force Usage</h4>
 <ol>
-    <li>enter `git config --global url."ssh://ssh@github.com/".insteadOf "https://github.com/"` into your terminal</li>
-    <li>add the above line to ~/.bashrc to make this reboot save</li>
+    <li>enter `git config --global url."git@github.com:".insteadOf "https://github.com/"` into your terminal</li>
 </ol>
 
 
