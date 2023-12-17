@@ -1,7 +1,6 @@
 {
 	"name": "Jekyll",
 	"image": "mcr.microsoft.com/devcontainers/jekyll",
-	"onCreateCommand": "echo \"bundle exec jekyll serve\" >> ~/.bash_history",
 	"customizations": {
 		"vscode": {
 			"extensions": [
