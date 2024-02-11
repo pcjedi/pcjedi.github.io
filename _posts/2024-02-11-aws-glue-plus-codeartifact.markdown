@@ -86,4 +86,4 @@ You can give it more complexity if you have to of course, but the basic stuff fo
 
 ## Discussion
 
-You now have a lambda handler, that is able to trigger a glue job with authentication to the codeartifact. Of course, you will need to set the permissions right, as the lambda needs to have previleges to do the stuff it does now. In the logs of the Glue job runs will the codeartifact token be visible. This is not that critical, as it only has a duration of 12h and people/resources who are previliged to see glue job run details are probably also permitted to read your codeartifact. But keep this in mind.
+You now have a lambda handler, that is able to trigger a glue job with authentication to the codeartifact. Of course, you will need to set the permissions right, as the lambda needs to have privileges to do the stuff it does now. In the logs of the Glue job runs will the codeartifact token be visible. This is not that critical, as it only has a duration of 12h and people/resources who are previliged to see glue job run details are probably also permitted to read your codeartifact. But keep this in mind.
