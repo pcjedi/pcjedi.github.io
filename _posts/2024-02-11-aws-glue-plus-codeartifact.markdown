@@ -49,7 +49,7 @@ def get_index_url(
     return prefix + repository_endpoint.replace("https://", f"https://aws:{authorization_token}@") + suffix
 
 
-def  lambda_handler(event, context):
+def lambda_handler(event, context):
     glue_client = boto3.client("glue")
 
     default_arguments = glue_client.get_job(JobName=job_name).get("Job", {}).get("DefaultArguments", {})
