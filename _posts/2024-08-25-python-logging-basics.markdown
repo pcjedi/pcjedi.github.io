@@ -21,9 +21,7 @@ Here, i will quickly explain the 3 basic components of the Logging module. Other
 ### Logger
 
 When using the logging functions available directly in the logging module, like in the example above, you are using the `root`-logger.
-You can have more than one logger.
-Each logger is defined by its name.
-You would never instantiate a logger directly, but rather call the `logging.getLogger`-function, which does this for you. This function gets the logger and if not available, creates it for you.
+This will work in a very simple script. As soon as you are dealing with multiple modules, a more fine-grained interface is needed to configure what message should go to which output. A Key Part of this is, to use different Loggers. Loggers are defined by their names in a one-to-one relationship. This means, that you can get any Logger from anywhere by calling its name. To do that, you call the `logging.getLogger(name=name)`-function. If no logger of that name exists, it will be created. In fact, this is the way you create a logger.
 
 ### Handler
 
@@ -39,10 +37,11 @@ The Formatter defines how the Message is displayed. In the example above, you ca
 
 ```python
 import logging
+import sys
 
 logger = logging.getLogger(name="loggername")
 
-handler = logging.StreamHandler()
+handler = logging.StreamHandler(stream=sys.stderr) #  stderr being the default
 handler.formatter = logging.Formatter(fmt="%(name)s %(lineno)d %(message)s")
 
 logger.addHandler(handler)
@@ -74,13 +73,13 @@ logging.getLogger("a.b.c").parent
 # <Logger a.b (WARNING)>
 ```
 
-We created a Logger named `a`. After that we created a Logger `b` with `a` as its parent. After that, we created a Logger `c` with `b` as its Parent. We can make use of this by using `__name__` as the logger name. If we are inside a module and not `__main__`, the logger from the file/folder one hierarchy level above will become the ancestor. This will make it easy to configure the logging on a module basis, when executed.
+We created a Logger named `a`. After that we created a Logger `b` with `a` as its parent. After that, we created a Logger `c` with `b` as its Parent. We can make use of this by using `__name__` as the logger name. If we are inside a module and not `__main__`, the logger from the folder one hierarchy level above will become the ancestor. This will make it easy to configure the logging on a module basis, when executed.
 
-> always initialize a logger like this `logger = logging.getLogger(__name__)`
+> if initializing a logger like this `logger = logging.getLogger(__name__)` it becomes easy to configure it
 
 ### Propagation
 
-The advantage of Ancestry is, that certain properties of loggers can be 'inherited' through loggers due to propagation. I am not talking about real Inheritance here like meant in OOP, but rather an implicit one, due to the Propagation of Log Messages through the Logger Hierarchy. Meaning, every Message will be handled by the Handlers of the Logger and afterwards be propagated to the Parent, where this loop continues, until the Root Logger is reached. The Propagation can be deactivated at any Logger. Consider the following Example:
+The advantage of Ancestry is, that certain properties of loggers can be 'inherited' through loggers due to propagation. I am not talking about real Inheritance here, like meant in OOP, but rather an implicit one. Every Message will be handled by the Handlers of the Logger and afterwards be propagated to the Parent, where this loop continues, until the Root Logger is reached. This Propagation can be deactivated at any Logger. Consider the following Example:
 
 ```python
 import logging
