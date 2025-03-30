@@ -111,7 +111,7 @@ In `debug.log` we see the line `a.b.c 12 log this`, but nothing more. The line 1
 
 ### Configuration for a single File
 
-After all this theory I want to give you a little pratical shortcut for the configuration, that will probably solve 90% of all usecases. Writing the logs to a single file is this [typical usecase](https://docs.python.org/3/howto/logging.html#logging-to-a-file). Gladly, this can be easily configured, using `logging.basicConfig`:
+After all this theory I want to give you a little practical shortcut for the configuration, that will probably solve 90% of all use-cases. Writing the logs to a single file is this [typical usecase](https://docs.python.org/3/howto/logging.html#logging-to-a-file). Gladly, this can easily be configured, using `logging.basicConfig`:
 
 ```python
 import logging
