@@ -9,7 +9,6 @@ A recipe is invoked by executing `make <targets>` if the prerequisites are newer
 
 A [phony target](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html) will not check for newness.
 
-> [!WARNING]
 > Be careful with directories as targets or prerequisites, as their newness cannot be easily determined.
 
 # Introduction
